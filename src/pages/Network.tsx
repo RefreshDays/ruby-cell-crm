@@ -10,17 +10,17 @@ const MOCK_PARTNERS = [
 export default function Network() {
     return (
         <div className="space-y-6">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                     <h2 className="text-2xl font-bold text-gray-900">파트너 네트워크</h2>
                     <p className="text-gray-500">다운라인 현황과 팀 성과를 한눈에 확인하세요.</p>
                 </div>
                 <div className="flex gap-3">
-                    <div className="bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm">
+                    <div className="bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm flex-1 md:flex-none">
                         <span className="text-xs text-gray-500 block uppercase font-bold">전체 파트너</span>
                         <span className="text-lg font-bold text-gray-900">24명</span>
                     </div>
-                    <div className="bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm">
+                    <div className="bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm flex-1 md:flex-none">
                         <span className="text-xs text-gray-500 block uppercase font-bold">그룹 PV</span>
                         <span className="text-lg font-bold text-primary">85,000</span>
                     </div>

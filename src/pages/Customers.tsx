@@ -48,7 +48,43 @@ export default function Customers() {
                     </button>
                 </div>
 
-                <div className="overflow-x-auto">
+                <div className="md:hidden space-y-4 p-4">
+                    {filteredCustomers.map((customer) => (
+                        <div
+                            key={customer.id}
+                            onClick={() => window.location.href = `/customers/${customer.id}`}
+                            className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm active:scale-98 transition-transform cursor-pointer"
+                        >
+                            <div className="flex items-center gap-4 mb-3">
+                                <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-base">
+                                    {customer.name.charAt(0)}
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-gray-900">{customer.name}</h3>
+                                    <p className="text-sm text-gray-500">{customer.phone}</p>
+                                </div>
+                                {customer.hasFreeTrial && (
+                                    <span className="ml-auto text-[10px] font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full border border-green-100">
+                                        체험완료
+                                    </span>
+                                )}
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-2 text-sm text-gray-600 mb-3">
+                                <div className="bg-gray-50 px-3 py-2 rounded-lg">
+                                    <span className="text-xs text-gray-400 block">피부 타입</span>
+                                    {customer.skinType}
+                                </div>
+                                <div className="bg-gray-50 px-3 py-2 rounded-lg">
+                                    <span className="text-xs text-gray-400 block">최근 방문</span>
+                                    {customer.lastVisit ? format(new Date(customer.lastVisit), 'MM.dd') : '-'}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="hidden md:block overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="bg-gray-50 text-gray-500 text-sm">

@@ -103,7 +103,7 @@ export default function Schedule() {
                                     key={day.toISOString()}
                                     onClick={() => setSelectedDate(day)}
                                     className={cn(
-                                        "h-32 rounded-xl border p-2 cursor-pointer transition-all hover:shadow-md relative",
+                                        "h-24 md:h-32 rounded-xl border p-2 cursor-pointer transition-all hover:shadow-md relative",
                                         isSelected ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-gray-100 bg-gray-50/50 hover:bg-white",
                                         isToday && !isSelected && "bg-blue-50/50"
                                     )}
@@ -119,14 +119,29 @@ export default function Schedule() {
                                     </div>
 
                                     <div className="mt-2 space-y-1">
-                                        {dayEvents.slice(0, 2).map((ev) => (
-                                            <div key={ev.id} className="text-[10px] truncate px-1.5 py-0.5 rounded bg-white border border-gray-100 shadow-sm text-gray-700">
-                                                {ev.title}
-                                            </div>
-                                        ))}
-                                        {dayEvents.length > 2 && (
-                                            <div className="text-[10px] text-gray-400 pl-1">+{dayEvents.length - 2} 더보기</div>
-                                        )}
+                                        {/* Desktop: Show Event Titles */}
+                                        <div className="hidden md:block space-y-1">
+                                            {dayEvents.slice(0, 2).map((ev) => (
+                                                <div key={ev.id} className="text-[10px] truncate px-1.5 py-0.5 rounded bg-white border border-gray-100 shadow-sm text-gray-700">
+                                                    {ev.title}
+                                                </div>
+                                            ))}
+                                            {dayEvents.length > 2 && (
+                                                <div className="text-[10px] text-gray-400 pl-1">+{dayEvents.length - 2} 더보기</div>
+                                            )}
+                                        </div>
+
+                                        {/* Mobile: Show Dots Only */}
+                                        <div className="md:hidden flex justify-center gap-1 mt-4">
+                                            {dayEvents.slice(0, 3).map((ev, i) => (
+                                                <div key={i} className={cn(
+                                                    "w-1.5 h-1.5 rounded-full",
+                                                    ev.type === 'Trial' ? "bg-pink-400" :
+                                                        ev.type === 'Business' ? "bg-blue-400" : "bg-purple-400"
+                                                )} />
+                                            ))}
+                                            {dayEvents.length > 3 && <span className="text-[8px] text-gray-400">+</span>}
+                                        </div>
                                     </div>
                                 </div>
                             );
