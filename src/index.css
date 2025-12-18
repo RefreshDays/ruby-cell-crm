@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #9d174d;
+  /* Deep Ruby */
+  --color-primary-light: #be185d;
+  --color-primary-dark: #831843;
+
+  --color-secondary: #d4af37;
+  /* Metallic Gold */
+  --color-secondary-light: #fcd34d;
+  --color-secondary-dark: #b45309;
+
+  --color-background: #f8fafc;
+  /* Slate 50 */
+  --color-surface: #ffffff;
+
+  --color-text-primary: #1e293b;
+  /* Slate 800 */
+  --color-text-secondary: #64748b;
+  /* Slate 500 */
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text-primary antialiased;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+}
